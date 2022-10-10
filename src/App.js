@@ -16,6 +16,7 @@ export default function App() {
 		console.log("submitted", values);
 		console.log(JSON.stringify(values));// saving values in local storage  submitted by user to pass in tables component 
 		window.localStorage.setItem('cvDetails', JSON.stringify(values));
+		
 		navigate("/dragdropUtility")
 
 	};
@@ -57,74 +58,7 @@ export default function App() {
 					<Input placeholder='Work Experience' />
 				</Form.Item>
 
-				<Form.List name={"experiences"}>
-					{(fields, { add, remove }) =>
-						//looping through fields number as added by user 
-						<>
-
-							{fields.map((field, index) => {
-
-								return (
-
-									<Space direction='horizontal' size={12}  >
-
-										<Form.Item
-											key={field.key}
-											name={[field.name, "first"]} // unique name for each looping index
-											label={`${index + 1}-Work Experience`}
-										>
-											<Input placeholder='Organization' />
-										</Form.Item>
-
-										<Form.Item
-
-											name={[field.name, "Designation"]}// unique name for each looping index
-
-										>
-											<Input placeholder='Designation' />
-										</Form.Item>
-										<MinusCircleOutlined style={{ height: 40, color: "red" }} onClick={() => {
-
-											remove(field.name);// able to remove the work expereince 
-										}} />
-
-
-										<Form.Item
-											label="Academic History"
-											name={"AcademicExperience"}
-
-											rules={[{ required: true, message: "Academic History field should be filled" }]}
-										>
-											<Input placeholder='Academic History' />
-										</Form.Item>
-
-									</Space>
-
-
-
-								)
-
-
-
-
-							})}
-							<Form.Item>
-								<Button icon={<PlusOutlined />} type="dashed" block onClick={() => {
-
-									add();// able to add the work expereince 
-								}} >Add another Work Experience</Button>
-
-
-							</Form.Item>
-						</>
-
-
-
-
-
-					}
-
-				</Form.List>
+			
 
 				<Form.Item
 				// wrapperCol={{
